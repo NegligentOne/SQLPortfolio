@@ -14,7 +14,7 @@ create table gameSales(
 
 --import CSV data
 copy gameSales(Standing,Title,Platform,releaseYear,Genre,Publisher,NA_Sales,EU_Sales,JP_Sales,Other_Sales,Global_Sales)
-from 'C:\Users\Negligent\Desktop\Course-python-data-science-master\vgsales.csv'
+from 'C:\Users\Negligent\Desktop\ABTS\vgsales.csv'
 DELIMITER ',' 
 null 'N/A'
 csv header;
