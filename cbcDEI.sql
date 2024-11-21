@@ -58,7 +58,7 @@ SET totalCredits = [1cred] + [2cred] + [3cred]
 
 SELECT count(*) FROM CBC -- (20,000 records)
 
---JASON number of students > 60 credits (you say these are graduates/transfers with 90%)
+--Number of students > 60 credits (90% graduation rate)
 SELECT STARTYEAR, count(pkey) AS numStudents
 FROM CBC 
 WHERE totalcredits >= 60
@@ -84,7 +84,7 @@ WHERE totalcredits >= 60
 GROUP BY STARTYEAR
 ORDER  BY STARTYEAR DESC
 
---Deeper dive into >60 credits. Hispanic Females HUUUUUUUGGGGGGEEEEEEE!!!!!!!!
+--Deeper dive into >60 credits.
 SELECT STARTYEAR, count(pkey),
 	sum(CASE WHEN RACE='Hispanic' AND GENDER ='F' THEN 1 ELSE 0 end) AS HispanicFemale,
 	sum(CASE WHEN race='Hispanic' AND GENDER ='M' THEN 1 ELSE 0 end) AS HispanicMale,
@@ -125,7 +125,7 @@ SELECT startyear,
 	GROUP BY STARTYEAR 
 	ORDER  BY STARTYEAR DESC;
 
---Adding in Gender because it's curious
+--Adding in Gender
 SELECT startyear,
 		(sum(CASE WHEN [totalCredits] >=60 AND race='Hispanic' AND GENDER ='F' THEN 1 ELSE 0 end) * 100.0 / 
 		count(CASE WHEN [totalCredits] >=60 THEN 1 ELSE 0 end)) AS HispanicFemale,
